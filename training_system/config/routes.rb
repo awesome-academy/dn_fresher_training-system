@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   
   namespace :trainer do
     resources :courses
+    resources :user_courses, only: [:create, :destroy]
+    resources :course_subjects, only: [:create, :destroy]
   end
 end

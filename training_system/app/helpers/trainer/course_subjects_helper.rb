@@ -1,0 +1,2 @@
+module Trainer::CourseSubjectsHelper
+end

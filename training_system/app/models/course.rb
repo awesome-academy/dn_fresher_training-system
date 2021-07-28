@@ -3,6 +3,7 @@ class Course < ApplicationRecord
   has_many :users, through: :user_courses
   has_many :course_subjects, dependent: :destroy
   has_many :subjects, through: :course_subjects
+  accepts_nested_attributes_for :user_courses, update_only: true
   enum status: {init: 0, in_progress: 1, finished: 2}
 
   scope :created_desc, ->{order(created_at: :desc)}
