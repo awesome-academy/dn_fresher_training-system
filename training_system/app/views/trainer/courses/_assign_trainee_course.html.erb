@@ -1,0 +1,19 @@
+<tr>
+  <th scope="row">
+    <div class="media align-items-center">
+      <div class="media-body">
+        <span class="name mb-0 text-sm"><%= trainee_not_course.name %></span>
+      </div>
+    </div>
+  </th>
+  <td class="budget">
+    <%= trainee_not_course.email %>
+  </td>
+  <td class="budget">
+    <%= link_to t("views.course.assign.btn_assign"), 
+                trainer_user_courses_path(@course, trainee_id: trainee_not_course.id), 
+                method: :post, 
+                class: "btn btn-success",
+                data: {confirm: t("views.course.assign.confim")} %>
+  </td>
+</tr>

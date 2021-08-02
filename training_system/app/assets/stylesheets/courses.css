@@ -4,3 +4,14 @@
 .btn-courses{
   padding-top: 20px;
 }
+
+.assign-table-tranee {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.assign-trainee {
+  width: 48%
+}

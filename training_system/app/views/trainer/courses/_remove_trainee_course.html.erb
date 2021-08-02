@@ -1,0 +1,19 @@
+<tr>
+  <th scope="row">
+    <div class="media align-items-center">
+      <div class="media-body">
+        <span class="name mb-0 text-sm"><%= trainee.name %></span>
+      </div>
+    </div>
+  </th>
+  <td class="budget">
+    <%= trainee.email %>
+  </td>
+  <td class="budget">
+    <%= link_to t("views.course.assign.btn_remove"), 
+                trainer_user_course_path(@course, trainee_id: trainee.id), 
+                method: :delete, 
+                class: "btn btn-danger",
+                data: {confirm: t("views.course.assign.confim")} %>
+  </td>
+</tr>

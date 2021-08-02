@@ -12,7 +12,12 @@ class Trainer::CoursesController < Trainer::BaseController
     load_subjects @course
   end
 
-  def edit; end
+  def edit
+    load_trainees @course
+    trainee_not_course
+    load_subjects @course
+    subject_not_course
+  end
 
   def new
     @course = Course.new
@@ -67,5 +72,19 @@ class Trainer::CoursesController < Trainer::BaseController
   def load_subjects course
     @subjects = course.subjects.page(params[:page])
                       .per(Settings.courses.per_page)
+  end
+
+  def trainee_not_course
+    trainee = @course.users.trainee.ids
+    @trainees_not_course = User.trainee.where.not(id: trainee)
+                               .page(params[:page])
+                               .per(Settings.courses.per_page)
+  end
+
+  def subject_not_course
+    subjects = @course.subjects.ids
+    @subjects_not_course = Subject.where.not(id: subjects)
+                                  .page(params[:page])
+                                  .per(Settings.courses.per_page)
   end
 end

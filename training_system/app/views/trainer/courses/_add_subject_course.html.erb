@@ -1,0 +1,19 @@
+<tr>
+  <th scope="row">
+    <div class="media align-items-center">
+      <div class="media-body">
+        <span class="name mb-0 text-sm"><%= subject_not_course.name %></span>
+      </div>
+    </div>
+  </th>
+  <td class="budget">
+    <%= subject_not_course.duration %>
+  </td>
+  <td class="budget">
+    <%= link_to t("views.course.assign.btn_assign"), 
+                trainer_course_subjects_path(@course, subject_id: subject_not_course.id), 
+                method: "post", 
+                class: "btn btn-success",
+                data: {confirm: t("views.course.assign.confim")} %>
+  </td>
+</tr>

@@ -1,6 +1,6 @@
 <div class="container-fluid mt--6">
   <div class="row">
-    <div class="col-xl-8 order-xl-1">
+    <div class="col-xl-12 order-xl-1">
       <div class="card">
         <div class="card-header">
           <div class="row align-items-center">
@@ -31,6 +31,98 @@
               <%= f.submit t("views.course.edit.save_edit"), class: "btn btn-primary" %>
             </div>
           <% end %>
+        </div>
+      </div>
+      <div class="assign-table-tranee">
+        <div class="card assign-trainee">
+          <div class="card-header border-0">
+            <h3 class="mb-0"><%= t "views.course.assign.header_list_assign_trainee" %></h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name"><%= t "views.course.assign.name" %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t "views.course.assign.email" %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t "views.course.assign.btn_assign" %></th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <%= render partial: "assign_trainee_course", collection: @trainees_not_course, as: :trainee_not_course %>
+              </tbody>
+            </table>
+            <div class="digg_pagination">
+              <%= paginate @trainees_not_course %>
+            </div>
+          </div>
+        </div>
+        <div class="card assign-trainee">
+          <div class="card-header border-0">
+            <h3 class="mb-0"><%= t "views.course.assign.header_list_remove_trainee" %></h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name"><%= t "views.course.assign.name" %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t "views.course.assign.email" %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t "views.course.assign.btn_remove" %></th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <%= render partial: "remove_trainee_course", collection: @trainees, as: :trainee %>
+              </tbody>
+            </table>
+            <div class="digg_pagination">
+              <%= paginate @trainees %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="assign-table-tranee">
+        <div class="card assign-trainee">
+          <div class="card-header border-0">
+            <h3 class="mb-0"><%= t("views.course.assign.header_list_add_subject") %></h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name"><%= t("views.course.assign.name") %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t("views.course.assign.duration") %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t("views.course.assign.btn_assign") %></th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <%= render partial: "add_subject_course", collection: @subjects_not_course, as: :subject_not_course %>
+              </tbody>
+            </table>
+            <div class="digg_pagination">
+              <%= paginate @subjects_not_course %>
+            </div>
+          </div>
+        </div>
+        <div class="card assign-trainee">
+          <div class="card-header border-0">
+            <h3 class="mb-0"><%= t("views.course.assign.header_list_remove_subject") %></h3>
+          </div>
+          <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+              <thead class="thead-light">
+                <tr>
+                  <th scope="col" class="sort" data-sort="name"><%= t("views.course.assign.name") %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t("views.course.assign.duration") %></th>
+                  <th scope="col" class="sort" data-sort="budget"><%= t("views.course.assign.btn_remove") %></th>
+                </tr>
+              </thead>
+              <tbody class="list">
+                <%= render partial: "remove_subject_course", collection: @subjects, as: :subject %>
+              </tbody>
+            </table>
+            <div class="digg_pagination">
+              <%= paginate @subjects %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
