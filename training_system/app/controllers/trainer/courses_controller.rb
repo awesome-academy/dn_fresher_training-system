@@ -30,7 +30,7 @@ class Trainer::CoursesController < Trainer::BaseController
 
   def course_params
     params.require(:course).permit(
-      :name, :description, :status, :start_date, :end_date
+      :name, :description, :status, :start_date, :end_date, subject_ids: []
     )
   end
 

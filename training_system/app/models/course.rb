@@ -7,6 +7,7 @@ class Course < ApplicationRecord
 
   scope :created_desc, ->{order(created_at: :desc)}
 
+  validates :course_subjects, presence: true
   validates :name, :description, :start_date, :end_date, presence: true
   validate :check_start_date_greater_current_date, if: ->{start_date.present?}
   validate :check_end_date_is_after_start_date, if: ->{is_date_present?}
