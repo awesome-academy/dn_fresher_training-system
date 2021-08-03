@@ -33,10 +33,11 @@ en:
       index:
         header: "List Course"
         detail_course: "Details Course"
+        start_course: "Start Course"
         name: "Name Course"
         status: "Status"
         start_date: "Start Date"
-        h_details: "Details"
+        option: "Options"
       show:
         header: "Details of Course"
         content: "Content"

@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   
   namespace :trainer do
-    resources :courses
+    resources :courses do
+      member do
+        post "start_course"
+      end
+    end
   end
 end

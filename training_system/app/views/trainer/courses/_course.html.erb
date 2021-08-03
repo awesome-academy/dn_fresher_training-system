@@ -6,7 +6,7 @@
       </div>
     </div>
   </th>
-  <td class="budget">
+  <td class="name">
     <%= l(course.start_date) %>
   </td>
   <td>
@@ -15,7 +15,12 @@
       <span class="status"><%= course.status %></span>
     </span>
   </td>
-  <td class="budget">
-    <%= link_to t("views.course.index.detail_course"), trainer_course_path(course.id) %>
+  <td class="name">
+    <%= link_to t("views.course.index.detail_course"), trainer_course_path(course.id),  class: "btn btn-info" %>
+    <% if course.init? %>
+      <%= link_to t("views.course.index.start_course"),"#",
+        class: "btn btn-danger js-start-course", data:{id: course.id },
+        id: "start_course#{course.id}", method: :post, remote: true %>
+    <% end %>
   </td>
 </tr>

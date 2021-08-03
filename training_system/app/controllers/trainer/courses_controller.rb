@@ -39,6 +39,18 @@ class Trainer::CoursesController < Trainer::BaseController
     end
   end
 
+  def start_course
+    @course = Course.find_by id: params[:id]
+
+    if @course.update status: "in_progress"
+      @course.course_subjects.first.update status: "in_progress"
+      redirect_to trainer_courses_path
+      flash[:success] = t "courses.update.success"
+    else
+      flash[:danger] = t "courses.update.failed"
+    end
+  end
+
   private
 
   def course_params

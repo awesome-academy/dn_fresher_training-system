@@ -4,6 +4,10 @@
 .btn-courses{
   padding-top: 20px;
 }
+.colspan_table{
+  width: 10%;
+  text-align: center;
+}
 
 .assign-table-tranee {
   display: flex;
