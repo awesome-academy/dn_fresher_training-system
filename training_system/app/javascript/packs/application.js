@@ -13,7 +13,6 @@ import "bootstrap"
 import "./courses"
 import "./argon"
 
-
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
