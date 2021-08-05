@@ -9,4 +9,12 @@
   <td class="budget">
     <%= subject.duration %>
   </td>
+  <td class="budget">
+    <%= status_subject(subject, @course) %>
+  </td>
+  <% if status_subject(subject, @course) == "init" %>
+    <td class="budget">
+      <%= link_to t("views.course.index.start_subject"), trainer_course_start_subject_path(subject.id, course_id: @course.id, subject_id: subject.id), method: :post, class: "btn btn-info" %>
+    </td>
+  <% end %>
 </tr>

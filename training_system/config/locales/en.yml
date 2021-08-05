@@ -26,10 +26,19 @@ en:
     sidebar:
       my_courses: "My courses"
       my_subject: "My_subject"
+      courses: "Courses"
+      new_subject: "Create Subject"
       my_task: "My_task"
       profile: "Profile"
       logout : "Logout"
+  model:
+    validation_subject: "Must have at task one Subject"
   views:
+    subject:
+      create:
+        header: "Create Subjects"
+        add_task: "Add Task"
+        remove_task: "Remove Task"
     course:
       index:
         header: "List Course"
@@ -38,6 +47,7 @@ en:
         status: "Status"
         start_date: "Start Date"
         start_course: "Start Course"
+        start_subject: "Start Subject"
         h_details: "Details"
         option: "Options"
         search: "Search"
@@ -58,6 +68,8 @@ en:
         header_list_subject: "List Subject"
         duration: "Duration"
         email: "Email"
+        start_subject: "Start Subject"
+        progress: "Progress"
         back: "Back"
       edit:
         save_edit: "Save changes"
@@ -81,6 +93,15 @@ en:
       remove_trainee:
         suc: "Remove Success"
         fail: "Remove Fail"
+    course_subjects_controller:
+      success: "Update Status Success"
+      fail: "Update Status Fail"
+      error_show: "Course does not exist"
+    subject_controller:
+      create:
+        success: "Create Successfully"
+        faild: "Create Failed"
+        duration: "Invalid Duration"
   date:
     formats:
       default: "%d-%m-%Y"

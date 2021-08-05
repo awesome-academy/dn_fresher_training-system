@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_24_045625) do
+ActiveRecord::Schema.define(version: 2021_08_03_095922) do
 
   create_table "course_subjects", charset: "utf8mb4", force: :cascade do |t|
     t.date "deadline"
@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(version: 2021_07_24_045625) do
     t.integer "duration"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "subject_id", null: false
+    t.index ["subject_id"], name: "index_tasks_on_subject_id"
   end
 
   create_table "user_course_subjects", charset: "utf8mb4", force: :cascade do |t|
@@ -91,6 +93,7 @@ ActiveRecord::Schema.define(version: 2021_07_24_045625) do
 
   add_foreign_key "course_subjects", "courses"
   add_foreign_key "course_subjects", "subjects"
+  add_foreign_key "tasks", "subjects"
   add_foreign_key "user_course_subjects", "course_subjects"
   add_foreign_key "user_course_subjects", "user_courses"
   add_foreign_key "user_courses", "courses"

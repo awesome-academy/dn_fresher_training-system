@@ -54,14 +54,16 @@
               <tr>
                 <th scope="col" class="sort" data-sort="name"><%= t("views.course.show.name_subject") %></th>
                 <th scope="col" class="sort" data-sort="budget"><%= t("views.course.show.duration") %></th>
+                <th scope="col" class="sort" data-sort="budget"><%= t("views.course.show.status") %></th>
+                <th scope="col" class="sort" data-sort="budget"><%= t("views.course.show.option") %></th>
               </tr>
             </thead>
             <tbody class="list">
-              <%= render partial: "subject_of_course", collection: @subjects, as: :subject %>
+              <%= render partial: "subject_of_course", collection: @course_subjects, as: :course_subject %>
             </tbody>
           </table>
           <div class="digg_pagination">
-            <%= paginate @subjects %>
+            <%= paginate @course_subjects %>
           </div>
         </div>
       </div>

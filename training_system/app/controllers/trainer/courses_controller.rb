@@ -46,6 +46,16 @@ class Trainer::CoursesController < Trainer::BaseController
     begin
       ActiveRecord::Base.transaction do
         @course = Course.find_by! id: params[:id]
+        @course_users = @course.user_courses
+        @course_start_subject = @course.course_subjects.first
+        @course_users.each do |course_user|
+          @course_start_subject
+          .user_course_subjects
+          .build(course_subject_id: @course_start_subject.id,
+                 user_course_id:course_user.id,
+                 status: 1)
+        end
+        @course_start_subject.save!
         @course.in_progress!
         @course.course_subjects.first.in_progress!
         flash[:success] = t "courses.update.success"
@@ -53,6 +63,30 @@ class Trainer::CoursesController < Trainer::BaseController
       end
     rescue
       flash[:danger] = t "courses.update.failed"
+      redirect_to trainer_courses_path
+    end
+  end
+
+  def start_subject
+    begin
+      ActiveRecord::Base.transaction do
+        @course = Course.find_by! id: params[:course_id]
+        @course_users = @course.user_courses
+        @course_start_subject = @course.course_subjects.find_by subject_id: params[:subject_id]
+        @course_users.each do |course_user|
+          @course_start_subject
+          .user_course_subjects
+          .build(course_subject_id: @course_start_subject.id,
+                 user_course_id:course_user.id,
+                 status: 1)
+        end
+        @course_start_subject.save!
+        @course_start_subject.in_progress!
+        flash[:success] = t "courses.update.success"
+      end
+    rescue
+      flash[:danger] = t "courses.update.failed"
+    ensure
       redirect_to trainer_courses_path
     end
   end

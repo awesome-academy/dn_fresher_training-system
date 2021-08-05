@@ -2,11 +2,19 @@
   <th scope="row">
     <div class="media align-items-center">
       <div class="media-body">
-        <span class="name mb-0 text-sm"><%= subject.name %></span>
+        <span class="name mb-0 text-sm"><%= course_subject.subject.name %></span>
       </div>
     </div>
   </th>
   <td class="budget">
-    <%= subject.duration %>
+    <%= course_subject.subject.duration %>
+  </td>
+  <td class="budget">
+    <%= course_subject.status %>
+  </td>
+  <td class="budget">
+    <% if course_subject.in_progress? %>
+      <%= button_to t("views.course.index.start_course"),trainee_course_subject_path(course_subject.id), method: :put, class: "btn btn-danger"%>
+    <% end %>
   </td>
 </tr>

@@ -16,11 +16,11 @@ class Trainee::CoursesController < Trainee::BaseController
     return if @course
 
     flash[:danger] = t("controllers.course_controller.error_show")
-    redirect_to trainer_courses_path
+    redirect_to trainee_courses_path
   end
 
   def load_subjects
-    @subjects = @course.subjects.page(params[:page])
-                       .per(Settings.courses.per_page)
+    @course_subjects = @course.course_subjects.page(params[:page])
+                              .per(Settings.courses.per_page)
   end
 end
