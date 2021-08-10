@@ -1,0 +1,29 @@
+<div class="container-fluid mt--6">
+  <div class="row mt--5">
+    <div class="col-md-10 ml-auto mr-auto">
+      <div class="card bg-default shadow">
+        <div class="card-header bg-transparent border-0">
+          <h3 class="text-white mb-0"><%= t "views.course_subject.trainee.show.header_progress" %></h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center table-dark table-flush">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col" class="sort" data-sort="name"><%= t "views.course_subject.trainee.show.name" %></th>
+                <th scope="col" class="sort" data-sort="budget"><%= t "views.course_subject.trainee.show.description" %></th>
+                <th scope="col" class="sort" data-sort="name"><%= t "views.course_subject.trainee.show.duration" %></th>
+                <th scope="col" class="sort" data-sort="budget"><%= t "views.course_subject.trainee.show.status" %></th>
+              </tr>
+            </thead>
+            <tbody class="list">
+              <%= render partial: "subject_of_trainee_of_course", collection: @course_subjects, as: :course_subject %>
+            </tbody>
+          </table>
+          <div class="digg_pagination">
+            <%= paginate @course_subjects %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

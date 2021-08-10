@@ -33,12 +33,23 @@ en:
       logout : "Logout"
   model:
     validation_subject: "Must have at task one Subject"
+  helper:
+    course:
+      awaiting: "Awaiting start subject"
   views:
     subject:
       create:
         header: "Create Subjects"
         add_task: "Add Task"
         remove_task: "Remove Task"
+    course_subject:
+      trainee:
+        show:
+          header_progress: "Trainee Progress"
+          name: "Name Subject"
+          description: "Description"
+          duration: "Duration"
+          status: "Status"
     course:
       index:
         header: "List Course"
