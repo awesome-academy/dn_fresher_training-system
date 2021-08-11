@@ -79,6 +79,23 @@ en:
         btn_remove: "Remove"
         header_list_remove_trainee: "List Remove Trainee"
         confim: "Are you sure?"
+    course_subject:
+      show:
+        header: "Details of Course"
+        content: "Content"
+        name: "Name Course"
+        description: "Description Course"
+        start_date: "Start Date"
+        end_date: "End Date"
+        status: "Status"
+        header: "List Task"
+        name_trainer: "Name Trainer"
+        header_list_trainer: "List Trainer"
+        name_subject: "Name Subject"
+        header_list_subject: "List Subject"
+        duration: "Duration"
+        back: "Back"
+        date: Date
   controllers:
     course_controller:
       let_login: "You must login"
@@ -99,6 +116,10 @@ en:
         success: "Create Successfully"
         faild: "Create Failed"
         duration: "Invalid Duration"
+    user_course_subject_controller:
+      success: "Update Status Success"
+      fail: "Update Status Fail"
+      error_show: "Course does not exist"
   date:
     formats:
       default: "%d-%m-%Y"

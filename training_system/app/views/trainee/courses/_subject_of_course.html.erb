@@ -2,19 +2,25 @@
   <th scope="row">
     <div class="media align-items-center">
       <div class="media-body">
-        <span class="name mb-0 text-sm"><%= course_subject.subject.name %></span>
+        <span class="name mb-0 text-sm"><%= course_subject.name %></span>
       </div>
     </div>
   </th>
   <td class="budget">
-    <%= course_subject.subject.duration %>
+    <%= l(course_subject.start_date, format: :long, default: '-') %>
   </td>
   <td class="budget">
-    <%= course_subject.status %>
+    <%= l(course_subject.start_date + course_subject.duration, format: :long, default: '-') %>  
   </td>
   <td class="budget">
-    <% if course_subject.in_progress? %>
-      <%= button_to t("views.course.index.start_course"),trainee_course_subject_path(course_subject.id), method: :put, class: "btn btn-danger"%>
+    <%= course_subject.duration %>  <%= t("views.course_subject.show.date") %> 
+  </td>
+  <td class="budget">
+    <%= show_status_user_subject(course_subject) %>
+  </td>
+  <td class="budget">
+    <% if course_subject.in_progress? && course_subject.course.in_progress? %>
+      <%= link_to t("views.course.show.finished"),trainee_course_subject_path(course_subject.id), class: "btn btn-danger" %>
     <% end %>
   </td>
 </tr>

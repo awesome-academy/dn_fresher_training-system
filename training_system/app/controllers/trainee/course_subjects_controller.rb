@@ -1,24 +1,13 @@
 class Trainee::CourseSubjectsController < Trainee::BaseController
-  before_action :load_subject, only: :update
+  before_action :load_subject,
+                :load_user_course_subject,
+                :load_task_subject, only: [:show, :update]
 
-  def update
-    ActiveRecord::Base.transaction do
-      course_subject_start =
-        CourseSubject.course_subject_start(@course_subject.course_id).init.created_asc
+  def show; end
 
-      @course_subject.finished!
-      unless course_subject_start.blank?
-        course_subject_start.first.in_progress!
-      else
-        @course_subject.course.finished!
-      end
-      flash[:success] = t("controllers.course_subjects_controller.success")
-    rescue ActiveRecord::RecordInvalid
-      flash[:danger] = t("controllers.course_subjects_controller.fail")
-    ensure
-      redirect_to trainee_course_path @course_subject.course_id
-    end
-  end
+  def update; end
+
+  private
 
   def load_subject
     @course_subject = CourseSubject.find_by id: params[:id]
@@ -26,5 +15,18 @@ class Trainee::CourseSubjectsController < Trainee::BaseController
 
     flash[:danger] = t("controllers.course_subjects_controller.error_show")
     redirect_to trainee_courses_path
+  end
+
+  def load_user_course_subject
+    @user_course = @course_subject.user_course.find_by(user_id: current_user.id)
+    @user_course_subject =
+      @course_subject.user_course_subjects.find_by(
+        user_course_id: @user_course.id,
+        course_subject_id: @course_subject.id
+      )
+  end
+
+  def load_task_subject
+    @task_subjects = @user_course_subject.user_tasks
   end
 end
