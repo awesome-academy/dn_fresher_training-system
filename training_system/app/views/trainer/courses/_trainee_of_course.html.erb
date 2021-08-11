@@ -9,4 +9,7 @@
   <td class="budget">
     <%= trainee.email %>
   </td>
+  <td class="budget">
+    <%= link_to t("views.course.show.progress"), trainer_trainee_path(trainee.id, course_id: @course.id),  class: "btn btn-info" %>
+  </td>
 </tr>

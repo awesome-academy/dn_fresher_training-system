@@ -1,0 +1,18 @@
+<tr>
+  <th scope="row">
+    <div class="media align-items-center">
+      <div class="media-body">
+        <span class="name mb-0 text-sm"><%= course_subject.name %></span>
+      </div>
+    </div>
+  </th>
+  <td class="budget">
+    <%= course_subject.description %>
+  </td>
+  <td class="budget">
+    <%= course_subject.duration %>
+  </td>
+  <td class="budget">
+    <%= status_subject_trainee(@course_user_subjects, course_subject) %>
+  </td>
+</tr>

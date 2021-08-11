@@ -10,11 +10,11 @@
   <file name='app/controllers/trainer/base_controller.rb'/>
   <file name='app/controllers/trainer/courses_controller.rb'/>
   <file name='app/controllers/trainer/subjects_controller.rb'/>
+  <file name='app/controllers/trainer/trainees_controller.rb'/>
   <file name='app/controllers/trainer/user_courses_controller.rb'/>
   <file name='app/helpers/application_helper.rb'/>
   <file name='app/helpers/courses_helper.rb'/>
   <file name='app/helpers/sessions_helper.rb'/>
-  <file name='app/helpers/trainer/subjects_helper.rb'/>
   <file name='app/jobs/application_job.rb'/>
   <file name='app/mailers/application_mailer.rb'/>
   <file name='app/models/application_record.rb'/>
