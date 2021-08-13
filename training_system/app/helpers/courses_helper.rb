@@ -12,11 +12,12 @@ module CoursesHelper
   end
 
   def check_status_user_task user_course_subject
-    user_course_subject.try(:user_tasks).pluck(:status).include?("in_progress")
+    user_course_subject.try(:user_tasks).pluck(:status).include?("in_progress") ||
+    user_course_subject.try(:user_tasks).pluck(:status).include?("init")
   end
 
   def check_status_user_course_sb course_subject
-    return  if course_subject.blank?
+    return content_tag(:span, t("helper.course.awaiting")) if course_subject.user_course_subjects.blank?
 
     user_course =
       course_subject.user_course.find_by(user_id: current_user.id)
@@ -27,7 +28,8 @@ module CoursesHelper
                           course_subject_id: course_subject.id,
                           user_course_id: user_course.id
                         )
-    return false if user_course_sb.blank?
+    return content_tag(:span, t("helper.course.awaiting")) if user_course_sb.start_date.blank?
+    
     duration = course_subject.subject.try(:duration)
     time_start = user_course_sb.start_date
     time_end = user_course_sb.end_date
@@ -48,14 +50,32 @@ module CoursesHelper
 
   def user_course_subject course_subject
     user_course =
-      course_subject.user_course.find_by(user_id: current_user.id)
+      course_subject.course.user_courses.find_by(user_id: current_user.id)
     return false if user_course.blank?
 
-    user_course_sb =
-      course_subject.try(:user_course_subjects).find_by(
-                          course_subject_id: course_subject.id,
-                          user_course_id: user_course.id
-                        )
+    course_subject.try(:user_course_subjects).find_by(
+                        course_subject_id: course_subject.id,
+                        user_course_id: user_course.id
+                      )
+  end
+
+  def start_date_user_course_subject course_subject
+    return content_tag(:span, t("helper.course.awaiting")) if course_subject.init?
+    return content_tag(:span, t("helper.course.awaiting")) if user_course_subject(course_subject).start_date.blank?
+
+    user_course_subject(course_subject).start_date
+  end
+
+  def end_date_user_course_subject course_subject
+    return content_tag(:span, t("helper.course.awaiting")) if course_subject.init?
+    return content_tag(:span, t("helper.course.awaiting")) if user_course_subject(course_subject).start_date.blank?
+
+    expected_date = user_course_subject(course_subject).start_date +
+                    course_subject.subject.duration
+    return expected_date if user_course_subject(course_subject).in_progress?
+
+    return user_course_subject(course_subject).end_date if user_course_subject(course_subject).finished?
+
   end
 
   def status_subject subject, course

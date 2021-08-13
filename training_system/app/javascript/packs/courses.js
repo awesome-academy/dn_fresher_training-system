@@ -3,7 +3,12 @@ import 'select2';
 import 'select2/dist/css/select2.css';
 
 $(document).ready(function() {
-  $('.select').select2({
+  $('#select2-subject').select2({
+    allowClear:true,
+    placeholder: "select Role",
+    closeOnSelect: true
+  });
+  $('#select2-user').select2({
     allowClear:true,
     placeholder: "select Role",
     closeOnSelect: true

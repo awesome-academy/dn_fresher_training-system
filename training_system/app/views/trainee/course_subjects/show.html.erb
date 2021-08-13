@@ -33,10 +33,10 @@
                   <%= @course_subject.description %>
                 </td> 
                 <td class="budget">
-                  <%= l(user_course_subject(@course_subject).start_date) %>
+                  <%= start_date_user_course_subject(@course_subject) %>
                 </td>
                   <td class="budget">
-                  <%= l(user_course_subject(@course_subject).end_date) %>
+                  <%= end_date_user_course_subject(@course_subject) %>
                 </td>
                 <td class="budget">
                   <%= @course_subject.duration %> <%= t("views.course_subject.show.date") %> 
@@ -45,10 +45,10 @@
                   <%= @user_course_subject.status %>
                 </td>
                 <td class="budget">
-                  <% if check_status_user_task(@user_course_subject) && @user_course_subject.in_progress? %>
-                    <span> <%= t("views.course_subject.show.wait")%> </span>
-                  <% elsif check_status_user_task(@user_course_subject) %>
+                  <% if  @user_course_subject.init? %>
                     <%= link_to t("views.course_subject.show.start"),start_subject_trainee_user_course_subject_path(@user_course_subject.id), method: :put,  class: "btn btn-danger" %>
+                  <% elsif check_status_user_task(@user_course_subject) && @user_course_subject.in_progress? || @user_course_subject.finished? %>
+                    <span> <%= t("views.course_subject.show.btn_waiting")%> </span>
                   <% else %>
                     <%= link_to t("views.course_subject.show.finished"), trainee_user_course_subject_path(@user_course_subject.id), method: :put, class: "btn btn-success" %>
                   <% end %>

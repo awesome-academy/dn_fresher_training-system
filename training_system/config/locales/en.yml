@@ -80,6 +80,7 @@ en:
         email: "Email"
         back: "Back"
         start_date_end_date: "Start Date - End Date"
+        option: "Option"
       edit:
         save_edit: "Save changes"
         header_edit: "Edit Course"
@@ -108,6 +109,8 @@ en:
         duration: "Duration"
         back: "Back"
         date: Date
+        wait: "Waiting"
+        btn_waiting: "--------"
   controllers:
     course_controller:
       let_login: "You must login"
@@ -162,3 +165,4 @@ en:
       finished_beyond_time: "Finished Beyond Time"
       unfinished: "Overdue But Unfinished"
       in_progress: "In_progress"
+      awaiting: "Awaiting"

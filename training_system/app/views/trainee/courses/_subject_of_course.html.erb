@@ -6,19 +6,19 @@
       </div>
     </div>
   </th>
+    <td class="budget">
+      <%= start_date_user_course_subject(course_subject) %>
+    </td>
+    <td class="budget">
+      <%= end_date_user_course_subject(course_subject) %>
+    </td>
   <td class="budget">
-    <%= l(user_course_subject(course_subject).start_date) %>
-  </td>
-  <td class="budget">
-    <%= l(user_course_subject(course_subject).end_date) %>
-  </td>
-  <td class="budget">
-    <%= course_subject.duration %>  <%= t("views.course_subject.show.date") %>
+    <%= course_subject.duration %> <%= t("views.course_subject.show.date") %>
   </td>
   <td class="budget">
     <%= check_status_user_course_sb course_subject %>
   </td>
-  <td class="budget">
+  <td class="budget"> 
     <% if course_subject.in_progress? && course_subject.course.in_progress? %>
       <%= link_to t("views.course.show.option"),trainee_course_subject_path(course_subject.id), class: "btn btn-danger" %>
     <% end %>

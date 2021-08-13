@@ -4,7 +4,7 @@ class Course < ApplicationRecord
   has_many :course_subjects, dependent: :destroy
   has_many :subjects, through: :course_subjects
   enum status: {init: 0, in_progress: 1, finished: 2}
-  delegate :name, :duration, to: :subjects
+  delegate :name, :duration, to: :subjects, prefix: :true
 
   scope :created_desc, ->{order(created_at: :desc)}
   scope :search, ->(search){where("name LIKE ?", "%#{search}%")}

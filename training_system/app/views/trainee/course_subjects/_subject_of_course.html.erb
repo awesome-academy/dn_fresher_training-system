@@ -16,8 +16,10 @@
     <%= task_subject.status %>
   </td>
   <td class="budget">
-    <%if task_subject.in_progress? %>
-      <%= link_to t("views.course.show.finished"), trainee_user_task_path(task_subject.id), method: :put, class: "btn btn-info" %>
+    <% if task_subject.init? %>
+      <%= link_to t("views.course.show.start"), start_task_trainee_user_task_path(task_subject.id), method: :put, class: "btn btn-info" %>
+    <% elsif  task_subject.in_progress?%>
+      <%= link_to t("views.course.show.finished"), trainee_user_task_path(task_subject.id), method: :put, class: "btn btn-success" %>
     <%end%>
   </td>
 </tr>
