@@ -10,6 +10,6 @@ class Subject < ApplicationRecord
   private
 
   def at_least_one_subject_task
-    return errors.add :base, t("model.validation_subject") if tasks.blank?
+    return errors.add :base, I18n.t("model.validation_subject") if tasks.blank?
   end
 end
