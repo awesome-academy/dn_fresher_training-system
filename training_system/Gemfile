@@ -16,8 +16,11 @@ gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "rails-i18n"
+gem "simplecov-rcov"
+gem "simplecov"
 
 group :development, :test do
+  gem "rspec-rails", "~> 4.0.1"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails", "~> 4.0.1"
   gem "rubocop", "~> 0.74.0", require: false
