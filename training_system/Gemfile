@@ -21,11 +21,14 @@ gem "simplecov"
 
 group :development, :test do
   gem "rspec-rails", "~> 4.0.1"
+  gem "faker", git: "https://github.com/faker-ruby/faker.git", branch: "master"
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "rspec-rails", "~> 4.0.1"
   gem "rubocop", "~> 0.74.0", require: false
   gem "rubocop-checkstyle_formatter", require: false
   gem "rubocop-rails", "~> 2.3.2", require: false
+  gem "factory_bot_rails"
+  
 end
 
 group :development do
@@ -39,5 +42,7 @@ group :test do
   gem "capybara", ">= 3.26"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "database_cleaner-active_record"
+  gem "shoulda-matchers", "~> 5.0"
 end
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
